@@ -1,6 +1,8 @@
 ---
 title: "Data Science Team Vision"
-output: html_document
+output:
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,9 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 *  Decide together what web applications and/or other "products" to build based on interests and motivations of students
 
 
-
-
-
 *  Team mentor, Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
      *  R based software,
      *  RStudio (graphical user interface)
@@ -23,16 +22,21 @@ knitr::opts_chunk$set(echo = TRUE)
      *  R Shiny package for interactive visual display
      *  tmap for mapping
      *  and many others
-*  Michael will also introduce the use of GitHub, as a collaborative repository for Team work
+*  Michael will also introduce the use of GitHub as the repository for Team work, and to facilitate several other aspects of team collaboration
 *  The Team will then decide together what tools (e.g. software) to use moving forward
-    
+
 
 
 *  Logistics
-    * Some logistics will need to be determiend based on interested students' scheduled
-    * Possible plan would be to meet one afternoon a week after school in the ??? room, and one afternoon a week "virtually", with the mentor at home or at work, and the students at school or other locations convineint for them
+    * Some logistics will need to be determined based on interested students' scheduled
+    * Possible plan would be to meet one afternoon a week after school in the ??? room, and one afternoon a week "virtually", with the mentor at home or at work, and the students at school or other convenient locations
     * With the students we may well can the name from "Team" to something they prefer.  The idea of the "Team" is much less about competition with other schools (although maybe that's an idea too...) but about working as a team together to learn, have fun, and maybe make some cool (or dope, or whatever a current word is...) and/or useful things together
    
+
+
+* Initial Team GitHub Site is [here](https://github.com/mcSamuelDataSci/Data_Science_Team)
+    *  The document you are reading, in both HTML and .docs formats, can be found on this site, as well at the "R Markdown" file that created these documents (DS_team_introduction.Rmd)
+    *  All other current Team files can also be found here
 
 
 ***
@@ -46,18 +50,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 * Examples of Open Data related to California Schools that we might work with initially include: 
-    * California Physical Fitness Test (PFT) program results: https://www.cde.ca.gov/ta/tg/pf/pftresearch.asp
-    * School metadata: https://www.cde.ca.gov/ds/si/ds/pubschls.asp 
-    * Academic performance data: https://www.cde.ca.gov/ta/ac/cm/
+    * [California Physical Fitness Test (PFT) program results:](https://www.cde.ca.gov/ta/tg/pf/pftresearch.asp)
+    * [School metadata:](ttps://www.cde.ca.gov/ds/si/ds/pubschls.asp) 
+    * [Academic performance data:](https://www.cde.ca.gov/ta/ac/cm/)
   
 
   
   
 ***
 
-* The California Physical Fitness Test (PFT) program results data are a very interesing and important data set.  The data are broken down to the school, district and county levels, and include results of multiple physical tests and "body mass index". Because of this, the data set can be used to explore many types of questions and to provide insightful and valuable analyses and visual displays.
+* The California Physical Fitness Test (PFT) program results data are a very interesting and important data set.  The data are broken down to the school, district and county levels, and include results of multiple physical tests and "body mass index". Because of this, the data set can be used to explore many types of questions and to provide insightful and valuable analyses and visual displays.
 
-* Some R code working with these data is shown below. Furthermore, this whole 
+* Part of the R code for working with these data, and some R code and resultant charts, is shown below.  
 
 ```{r, echo=FALSE,include=FALSE}
 library(dplyr)
@@ -68,9 +72,10 @@ fitnessgram_data   <- read_csv("Fitnessgram_data/2017_18_ResearchFile.txt") # us
 fitnessgram_labels <- read_csv("Fitnessgram_data/2017_18_Entities.txt")
 
 
-fg_districts_data  <- filter(fitnessgram_data,Level_Number==2,        # District
-                                              Report_Number==0)  %>%  # All Students   
-                                mutate(link=paste0(DIST,ChrtNum))
+fg_districts_data  <- filter(fitnessgram_data,
+                            Level_Number==2,        # District
+                            Report_Number==0)  %>%  # All Students   
+                      mutate(link=paste0(DIST,ChrtNum))
                                        
 district_codes_names <- filter(fitnessgram_labels, scode=="0000000", dcode !="00000") %>%
                           mutate(link=paste0(dcode,chrtnum)) %>%
@@ -88,12 +93,21 @@ fg_districts_info     <- left_join(fg_districts_data,
 ```{r, warning=FALSE}
 test_selected    <- "Upper Body Strength"
 county_selected  <- "Contra Costa"                         
-selected_info    <- filter(fg_districts_info, Line_Text == test_selected, County == county_selected, NoStud5 != 0)
+selected_info    <- filter(fg_districts_info, 
+                           Line_Text == test_selected, 
+                           County == county_selected, 
+                           NoStud5 != 0)
 
 hist(as.numeric(selected_info$Perc5a), breaks=20,
-                 main=paste("Histogram of",test_selected,"in",county_selected,"Schools"),
-                 xlab = "Score"
+     main=paste("Histogram of",test_selected,"in",county_selected,"Schools"),
+     xlab = "Score"
 )
 
 ```
+
+***
+
+* R markdown resources:
+
+https://stackoverflow.com/questions/29787850/how-do-i-add-a-url-to-r-markdown/29788494
 
