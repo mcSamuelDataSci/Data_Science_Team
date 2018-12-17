@@ -22,12 +22,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Activities
 
 *  The Team will decide together what tools (e.g. software) to use moving forward, and decide what web applications and/or other "products" to build based on interests and motivations of team members
-* Core team focus will be on retrieving/collected data, organizing and curating data, and analyzing and displaying data, BUT there would be some great team roles for other students/members like artists (design of pictures and logos), school leaders (suggesting directions for team projects), and others.
+* Core team focus will be on retrieving/collecting data, organizing and curating data, and analyzing and displaying data, BUT there would be some great team roles for other students/members like artists (design of pictures and logos), school leaders (suggesting directions for team projects), and others.
 *  Eventually, the team could apply for some small consulting gigs, to learn more about coding in the "real world" and to build some team resources
 
 ### Mentor or "Coach"
 *  Team Mentor (Coach?), Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
-     *  R based software,
+     *  R base software,
      *  RStudio (graphical user interface)
      *  tidyverse set of packages for "data wrangling"
      *  R Shiny package for interactive visual display
