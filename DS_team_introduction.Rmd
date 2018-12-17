@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE)
      *  tmap for mapping
      *  and many others
 *  Michael will also introduce the use of GitHub as the repository for Team work, and to facilitate several other aspects of team collaboration
-* A bit more about Michael can be found [here](http://dlab.berkeley.edu/people/dr-michael-samuel) or [here](https://www.linkedin.com/in/mcsamuel/)
+* A bit more about Michael can be found [here](http://dlab.berkeley.edu/people/dr-michael-samuel) or [here](https://www.linkedin.com/in/mcsamuel/), and a version of the main project on which he works can be found [here](https://cdph.ca.gov/communityburden).
 
 ### Logistics
 
