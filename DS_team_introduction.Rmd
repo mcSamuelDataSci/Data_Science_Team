@@ -1,5 +1,5 @@
 ---
-title: "Data Science Team Vision"
+title: " 'HS Team Data' Planning and Resource Documenet"
 output:
   html_document: default
   word_document: default
@@ -10,12 +10,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-*  Collaboratively develop a Data Science Team at John Sweet High School in Crockett, California
+*  Collaboratively develop "JS Team Data", a Data Science Team at John Sweet High School in Crockett, California
 *  Introduce interested students to the "hot" field of Data Science
-*  Decide together what web applications and/or other "products" to build based on interests and motivations of students
+*  Learn together how to make web sites and other data-related resources that can have an impact and/or are just fun
+*  Team "meetings" might include
+    *  Presentation of a new tool or topic 
+    *  Discussion of the topic
+    *  Working together on a current project
+*  Eventually, the team could apply for some small consulting gigs, to learn more about coding in the "real world" and to build some team resources
 
 
-*  Team mentor, Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
+
+*  Team Mentor (Coach?), Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
      *  R based software,
      *  RStudio (graphical user interface)
      *  tidyverse set of packages for "data wrangling"
@@ -23,7 +29,8 @@ knitr::opts_chunk$set(echo = TRUE)
      *  tmap for mapping
      *  and many others
 *  Michael will also introduce the use of GitHub as the repository for Team work, and to facilitate several other aspects of team collaboration
-*  The Team will then decide together what tools (e.g. software) to use moving forward
+*  The Team will then decide together what tools (e.g. software) to use moving forward, and decide what web applications and/or other "products" to build based on interests and motivations of team members
+* Core team focus will be on retrieving/collected data, organizing and curating data, and analyzing and displaying data, BUT there would be some great team roles for other students/members like artists (design of pictures and logos), school leaders (suggesting directions for team projects), and others.
 
 
 
@@ -42,11 +49,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ***
 
 
-
 * We will emphasize using "Open Data" and other data that is freely available in a machine readable format.  The mentor will introduce these types of data focusing on community health and "Social Determinants of Health", but after that, the Team could shift focus to any number of areas of interest like sports, music, technology or whatever 
-
-
-
 
 
 * Examples of Open Data related to California Schools that we might work with initially include: 
