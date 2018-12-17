@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### GitHub Site
 * Initial Team GitHub Site is [here](https://github.com/mcSamuelDataSci/Data_Science_Team)
-*  The document you are reading, in both HTML and .docs formats, can be found on this site, as well at the "R Markdown" file that created these documents (DS_team_introduction.Rmd)
+*  The document you are reading, in both HTML and .docx formats, can be found on this site, as well at the "R Markdown" file that created these documents (DS_team_introduction.Rmd)
 *  All other current Team files can also be found here
 
 
