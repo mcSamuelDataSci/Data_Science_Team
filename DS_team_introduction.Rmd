@@ -141,7 +141,7 @@ ggplot(selected_info, aes(x=Perc5a)) +
     * https://stackoverflow.com/questions/29787850/how-do-i-add-a-url-to-r-markdown/29788494
 
 
-```{r, eval=F}
+```{r, echo=F, eval=F}
 file.remove("docs/index.html")
 file.copy("DS_team_introduction.html","docs/index.html")
 ```
