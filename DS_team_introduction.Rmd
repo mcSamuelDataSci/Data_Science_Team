@@ -1,13 +1,32 @@
 ---
 title: " 'HS Team Data' Planning and Resource Document"
 output:
-  html_document: default
-  word_document: default
+  html_document:
+    self_contained: no
+  
+  
+  
+  
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+ 
+### Fun stuff
+
+* We will look at all sorts of "big" and "open" data, and explore data with various tools. We can definately have some fun with [this app](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/), looking at lots of data for every single NBA player
+
+
+```{r, out.width = "600px", echo = FALSE}
+# All defaults
+knitr::include_graphics("klay.JPG")
+
+#  ![alt text here](klay.JPG) 
+```
+
 
 ### Objectives
 
@@ -49,20 +68,19 @@ knitr::opts_chunk$set(echo = TRUE)
 *  All other current Team files can also be found here
 
 
+***
+
+
 ### "Open Data and Community Health"
 
 
 * We will emphasize using "Open Data" and other data that is freely available in a machine readable format.  The mentor will introduce these types of data focusing on community health and "Social Determinants of Health", but after that the Team could shift focus to any number of areas of interest like sports, music, technology or whatever 
 
-
 * Examples of Open Data related to California Schools that we might work with initially include: 
     * [California Physical Fitness Test (PFT) program results:](https://www.cde.ca.gov/ta/tg/pf/pftresearch.asp)
     * [School metadata:](ttps://www.cde.ca.gov/ds/si/ds/pubschls.asp) 
     * [Academic performance data:](https://www.cde.ca.gov/ta/ac/cm/)
-  
-  
-***
-
+ 
 ### Introductory Example
 
 * The California Physical Fitness Test (PFT) program results data are a very interesting and important data set.  The data are broken down to the school, district and county levels, and include results of multiple physical tests and "body mass index". Because of this, the data set can be used to explore many types of questions and to provide insightful and valuable analyses and visual displays.
@@ -95,18 +113,14 @@ fg_districts_info     <- left_join(fg_districts_data,
 
 
 
-
-
 ```{r, warning=FALSE}
 test_selected    <- "Upper Body Strength"
-county_selected  <- "Contra Costa"                         
 selected_info    <- filter(fg_districts_info, 
                            Line_Text == test_selected, 
-                           County == county_selected, 
-                           NoStud5 != 0)
+                           NoStud9 != 0)
 
-hist(selected_info$Perc5a, breaks=20,
-     main=paste("Histogram of",test_selected,"in",county_selected,"Schools"),cex.main=0.9,
+hist(selected_info$Perc9a, breaks=20, col="red",
+     main=paste("How do Kids in Ninth Grade in California Score\n on the",test_selected,"part\n of the Annual Fitness Test?"),cex.main=1.2,
      xlab = "Score"
 )
 
@@ -118,20 +132,26 @@ hist(selected_info$Perc5a, breaks=20,
 
 
 
-
 ```{r, warning=FALSE}
 library(ggplot2)
-county_selected  <- "Contra Costa"                         
+county_selected  <- "Los Angeles"                         
 selected_info    <- filter(fg_districts_info, 
                            County == county_selected, 
                            Table_Number == 1,
-                           NoStud5 != 0)
+                           NoStud9 != 0)
 
 
-ggplot(selected_info, aes(x=Perc5a)) + 
-        geom_histogram(binwidth=4,colour="white") +
-        facet_wrap( ~ Line_Text, ncol=2)    
+ggplot(selected_info, aes(x=Perc9a)) + 
+        geom_histogram(binwidth=4,colour="white",fill=I("blue")) +
+        facet_wrap( ~ Line_Text, ncol=2)   +
+        ggtitle(paste("How do Kids in Ninth Grade in", county_selected,"County Score\n on the Six Tests of the Annual Fitness Test?"))
 ```
+
+
+
+
+
+<!-- regular html comment
 
 
 ### Beginning of Resource List
@@ -139,6 +159,25 @@ ggplot(selected_info, aes(x=Perc5a)) +
 * R markdown resources:
 
     * https://stackoverflow.com/questions/29787850/how-do-i-add-a-url-to-r-markdown/29788494
+ --> 
+
+
+```{r, echo = FALSE}
+# http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/
+#library(shiny)
+#shinyAppDir(
+#  system.file("E:\\Data_Science_Team\\nba"),
+#  options = list(width = "100%", height = 700)
+#)
+```
+
+```{r, echo = FALSE}
+#library(shiny)
+#shinyAppFile(system.file("E:\\Data_Science_Team\\nba\\ui.R"))
+```
+
+
+
 
 
 ```{r, echo=F, eval=F}
