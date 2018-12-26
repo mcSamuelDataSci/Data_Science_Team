@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
  
 ### "Big Picture - Fun stuff"
 
-* We will look at all sorts of "big" and "open" data, and explore generating visualizations with various tools. We can definately have some fun with [this app](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/), looking at lots of data for every single NBA player.
+* We will look at all sorts of "big" and "open" data, and explore generating visualizations with various tools. We can definately have some fun with [this app](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/) made in R Shiny, looking at lots of data for every single NBA player.
 
 
 ```{r, out.width = "500px", echo = FALSE}
