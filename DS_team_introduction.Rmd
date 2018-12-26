@@ -11,7 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
- 
+<br> 
+
 ### "Big Picture - Fun stuff"
 
 * We will look at all sorts of "big" and "open" data, and explore generating visualizations with various tools. We can definately have some fun with [this app](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/) made in R Shiny, looking at lots of data for every single NBA player.
@@ -24,6 +25,7 @@ knitr::include_graphics("klay.JPG")
 #  ![alt text here](klay.JPG) 
 ```
 
+<br> 
 
 ### Objectives
 
@@ -35,11 +37,15 @@ knitr::include_graphics("klay.JPG")
     *  Discussion of the topic
     *  Working together on a current project
 
+<br> 
+
 ### Activities
 
 *  The Team will decide together what tools (e.g. software) to use moving forward, and decide what web applications and/or other "products" to build based on interests and motivations of team members
 * Core team focus will be on retrieving/collecting data, organizing and curating data, and analyzing and displaying data, BUT there would be some great team roles for other students/members like artists (design of pictures and logos), school leaders (suggesting directions for team projects), and others.
 *  Eventually, the team could apply for some small consulting gigs, to learn more about coding in the "real world" and to build some team resources
+
+<br> 
 
 ### Mentor or "Coach"
 *  Team Mentor (Coach?), Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
@@ -52,12 +58,15 @@ knitr::include_graphics("klay.JPG")
 *  Michael will also introduce the use of GitHub as the repository for Team work, and to facilitate several other aspects of team collaboration
 * A bit more about Michael can be found [here](http://dlab.berkeley.edu/people/dr-michael-samuel) or [here](https://www.linkedin.com/in/mcsamuel/), and a version of the main project on which he works can be found [here](https://cdph.ca.gov/communityburden).
 
+<br> 
+
 ### Logistics
 
 * Some logistics will need to be determined based on the schedules of interested students
 * A tentative plan would be to meet one afternoon a week after school in the ??? room, and one afternoon a week "virtually" (i.e. using WebEx), with the mentor at home or at work, and the students at school or other convenient locations
 * With the students we may well change the name from "Team" to something more exciting.  The idea of the "Team" is much less about competition with other schools (although maybe that's an idea too...) but about working as a team together to learn, have fun, and maybe make some cool and/or useful things together
    
+<br> 
 
 ### GitHub Site
 * Initial Team GitHub Site is [here](https://github.com/mcSamuelDataSci/Data_Science_Team)
@@ -67,6 +76,7 @@ knitr::include_graphics("klay.JPG")
 
 ***
 
+<br> 
 
 ### "Open Data and Community Health"
 
@@ -77,71 +87,72 @@ knitr::include_graphics("klay.JPG")
     * [California Physical Fitness Test (PFT) program results:](https://www.cde.ca.gov/ta/tg/pf/pftresearch.asp)
     * [School metadata:](ttps://www.cde.ca.gov/ds/si/ds/pubschls.asp) 
     * [Academic performance data:](https://www.cde.ca.gov/ta/ac/cm/)
- 
+
+<br> 
+
 ### Introductory Example
 
 * The California Physical Fitness Test (PFT) program results data are a very interesting and important data set.  The data are broken down to the school, district and county levels, and include results of multiple physical tests and "body mass index". Because of this, the data set can be used to explore many types of questions and to provide insightful and valuable analyses and visual displays.
 
-* Part of the R code for working with these data, and some R code and resultant charts, is shown below.  
 
 ```{r, echo=FALSE,include=FALSE}
 library(dplyr)
 library(readr)
 
-
 fitnessgram_data   <- read_csv("Fitnessgram_data/2017_18_ResearchFile.txt",na = c("", "**")) # use as needed: ,col_types="_ciiiii") 
 fitnessgram_labels <- read_csv("Fitnessgram_data/2017_18_Entities.txt")
 
-
-fg_districts_data  <- filter(fitnessgram_data,
-                            Level_Number==2,        # District
-                            Report_Number==0)  %>%  # All Students   
-                      mutate(link=paste0(DIST,ChrtNum))
-                                       
+fg_school_data       <- filter(fitnessgram_data,
+                               Level_Number==1,        # District
+                               Report_Number==0)  %>%  # All Students   
+                        mutate(link=paste0(DIST,ChrtNum))
+                                     
 district_codes_names <- filter(fitnessgram_labels, scode=="0000000", dcode !="00000") %>%
-                          mutate(link=paste0(dcode,chrtnum)) %>%
-                          select(link,chrtnum, dcode, District, County)
+                        mutate(link=paste0(dcode,chrtnum)) %>%
+                        select(link,chrtnum, dcode, District, County)
 
-fg_districts_info     <- left_join(fg_districts_data,
-                         district_codes_names,
-                         by= "link")
+fg_school_info       <- left_join(fg_school_data,
+                          district_codes_names,
+                          by= "link")
 
 ```
 
 
+* Some R code for "Filtering" these data and then making a simple histogram is shown below.  
+<br>
 
 ```{r, warning=FALSE}
 test_selected    <- "Upper Body Strength"
-selected_info    <- filter(fg_districts_info, 
+selected_info    <- filter(fg_school_info, 
                            Line_Text == test_selected, 
-                           NoStud9 != 0)
+                           NoStud9 != 0)  # this line removes schools with no 9th graders 
 
-hist(selected_info$Perc9a, breaks=20, col="red",
-     main=paste("How do Kids in Ninth Grade in California Score\n on the",test_selected,"part\n of the Annual Fitness Test?"),cex.main=1.2,
-     xlab = "Score"
+hist(selected_info$Perc9a, breaks=20, col="red", cex.main=1.2, xlab = "Score",
+     main=paste("How do Kids in Ninth Grade in California Score\n on the",
+                test_selected,"part\n of the Annual Fitness Test?")
 )
 
 ```
 
-
+<br>
+<br>
 
 * This chart above might lead to other questions, like, what about the other measures of fitness? What about my specific school? What about my school district?  What about boys compared to girls?  Can I see this on a map?  How can we know if the differences we see are "real" or just do to chance?  We could address all these questions together with the data we already have. A partial answer to the first question is below.  
 
 
-
 ```{r, warning=FALSE}
 library(ggplot2)
-county_selected  <- "Los Angeles"                         
-selected_info    <- filter(fg_districts_info, 
+county_selected  <- "Contra Costa"                         
+selected_info    <- filter(fg_school_info, 
                            County == county_selected, 
                            Table_Number == 1,
                            NoStud9 != 0)
 
-
 ggplot(selected_info, aes(x=Perc9a)) + 
         geom_histogram(binwidth=4,colour="white",fill=I("blue")) +
         facet_wrap( ~ Line_Text, ncol=2)   +
-        ggtitle(paste("How do Kids in Ninth Grade in", county_selected,"County Score\n on the Six Tests of the Annual Fitness Test?"))
+        ggtitle(paste("How do Kids in Ninth Grade in", county_selected,
+                      "County Score\n on the Six Tests of the Annual Fitness Test?"))
 ```
 
 
@@ -154,7 +165,7 @@ ggplot(selected_info, aes(x=Perc9a)) +
 ### Beginning of Resource List
 
 * R markdown resources:
-
+    * https://holtzy.github.io/Pimp-my-rmd/
     * https://stackoverflow.com/questions/29787850/how-do-i-add-a-url-to-r-markdown/29788494
  --> 
 
