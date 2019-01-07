@@ -1,9 +1,8 @@
 ---
-title: " 'HS Team Data' Planning and Resource Document"
+title: ' ''HS Team Data'' Planning and Resource Document'
 output:
+  word_document: default
   html_document: default
-   
-  
 ---
 
 ```{r setup, include=FALSE}
