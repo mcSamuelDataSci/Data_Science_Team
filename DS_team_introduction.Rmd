@@ -13,29 +13,37 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <br> 
 
-### "Big Picture - Fun stuff"
-
-* We will look at all sorts of "big" and "open" data, and explore generating visualizations with various tools. We can definately have some fun with [this app](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/) made in R Shiny, looking at lots of data for every single NBA player.
+### Big Picture 
 
 
-```{r, out.width = "500px", echo = FALSE}
+* Students who already have some programming/software skill can learn R, a cool modern program, and create interative web sites with data visualizations
+* Students with little or no skill with software can start, learning for example how to use spreadsheets, a fun and valuable tool for lots of things, including homework!
+* Students with interest in things like art, leadership, or just be organized could help "team" projects too
+
+
+
+### Fun stuff
+
+
+* We will look at all sorts of "big" and "open" data, and explore generating visualizations with various tools. We can definately have some fun with apps like [this](http://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/) made in R Shiny, looking at lots of data for every single NBA player, or even using R to make some simple games like [this](https://daattali.com/shiny/lightsout/).
+
+
+```{r, out.width = "800px", echo = FALSE}
 # All defaults
-knitr::include_graphics("klay.JPG")
+knitr::include_graphics("both.JPG")
+
+#knitr::include_graphics("klay.JPG")
 
 #  ![alt text here](klay.JPG) 
 ```
 
-<br> 
+<br>
 
 ### Objectives
 
-*  Collaboratively develop "JS Team Data", a Data Science Team at John Sweet High School in Crockett, California
+*  Develop "JS Team Data", a Data Science Team at John Sweet High School in Crockett, California
 *  Introduce interested students to the "hot" field of Data Science
 *  Learn together how to make web sites and other data-related resources that can have an impact and/or are just fun
-*  Team "meetings" might include
-    *  Presentation of a new tool or topic 
-    *  Discussion of the topic
-    *  Working together on a current project
 
 <br> 
 
@@ -48,13 +56,7 @@ knitr::include_graphics("klay.JPG")
 <br> 
 
 ### Mentor or "Coach"
-*  Team Mentor (Coach?), Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including
-     *  R base software,
-     *  RStudio (graphical user interface)
-     *  tidyverse set of packages for "data wrangling"
-     *  R Shiny package for interactive visual display
-     *  tmap for mapping
-     *  and many others
+*  Team Mentor (Coach?), Michael Samuel, will introduce the Team to a suite of tools based on the free and open source R ecosystem, including tools for "data wrangling", making charts, and makin maps.
 *  Michael will also introduce the use of GitHub as the repository for Team work, and to facilitate several other aspects of team collaboration
 * A bit more about Michael can be found [here](http://dlab.berkeley.edu/people/dr-michael-samuel) or [here](https://www.linkedin.com/in/mcsamuel/), and a version of the main project on which he works can be found [here](https://cdph.ca.gov/communityburden).
 
