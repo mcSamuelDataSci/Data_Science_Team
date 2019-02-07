@@ -1,8 +1,8 @@
 ---
 title: ' ''HS Team Data'' Planning and Resource Document'
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, out.width = "800px", echo = FALSE}
 # All defaults
-knitr::include_graphics("both.JPG")
+knitr::include_graphics("oddsEnds/both.JPG")
 
 #knitr::include_graphics("klay.JPG")
 
@@ -37,6 +37,13 @@ knitr::include_graphics("both.JPG")
 ```
 
 <br>
+
+
+* Another fun thing we could spend some time with [here](https://ryo-n7.github.io/2019-01-11-visualize-asian-cup/)
+
+<br>
+
+
 
 ### Objectives
 
@@ -194,5 +201,12 @@ file.remove("docs/index.html")
 file.copy("DS_team_introduction.html","docs/index.html")
 ```
 
+resources:
+https://www.census.gov/schools
+code.org
 
+
+school notes:
+  school hours 8:05-3:05
+  library has 26 desktops
 

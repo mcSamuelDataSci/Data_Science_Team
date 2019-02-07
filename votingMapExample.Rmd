@@ -1,0 +1,86 @@
+---
+title: "Map Example"
+author: "Michael Samuel"
+date: "January 22, 2019"
+output:
+  html_document: default
+  word_document: default
+---
+
+*  Michael Samuel
+*  samfam921@gamil.com
+*  Michael.Samuel@cdoph.ca.gov
+*  https://mcsamueldatasci.github.io/Data_Science_Team/
+*  https://github.com/mcSamuelDataSci/Data_Science_Team
+
+
+<br>
+
+The library() function loads "packages" that perfrom special functions into the workspace.
+
+*  the dplyr packages is a workhorse for data manipulation
+*  the tigris package connect to the US census and reads in geographic "shape" files.  It requires a free "census key" to run
+*  tmap is the R package I use for mapping. There are many others.
+<br>
+
+```{r message=FALSE}
+library(dplyr)   
+library(tigris)  
+library(tmap)
+options(tigris_class = "sf")  # Read shape files as Simiple Features objects
+```
+
+This step reads in a dataset from the cloud on votting patterns in Califonira. The dataset is from a California Open Data Set.  The main portal home pages is here https://data.chhs.ca.gov/
+
+```{r}
+voterData.t <- read.csv("https://data.chhs.ca.gov/dataset/40fd0792-2bfd-4303-a848-fc5cb4338295/resource/c384c86a-49d2-4128-8389-b2701ff0bc35/download/voter-registration-2002-2010.csv",as.is=TRUE)
+
+```
+
+This little step reads in a census-tract level geographic "shape file" for California from the US census. (A free "key" from the US Census in needed if you want to run it yourself; available here https://api.census.gov/data/key_signup.html. )
+
+```{r results='hide'}
+tracts_CA   <- tracts(state = "CA", cb = TRUE) 
+```
+
+
+```{r}
+voterData <- filter(voterData.t, geotype=="CT", 
+                                 reportyear==2010, 
+                                 race_eth_name=="Total", 
+                                 type == "voted/registered") %>%
+             transform(GEOID=paste0("0",geotypevalue))
+
+```
+
+This step merges the data using "join"
+
+```{r warning=FALSE}
+map.1    <- left_join(tracts_CA, voterData, by="GEOID")
+```
+
+This step makes a very simple map, with coloring based on the percent in the census tract who voted
+
+```{r  warning=FALSE}
+tmap_mode("view")
+tm_shape(map.1) + tm_polygons(col="percent")
+```
+
+This step filter the data to just Conta Costa County, and re-maps
+
+```{r warning=FALSE }
+map.2 <- filter(map.1,county_name == "Contra Costa")
+
+tm_shape(map.2) + tm_polygons(col="percent")
+```
+
+
+
+
+
+
+
+
+
+
+
