@@ -96,6 +96,9 @@ knitr::include_graphics("oddsEnds/both.JPG")
     * [School metadata:](ttps://www.cde.ca.gov/ds/si/ds/pubschls.asp) 
     * [Academic performance data:](https://www.cde.ca.gov/ta/ac/cm/)
 
+
+
+
 <br> 
 
 ### Introductory Example
@@ -162,6 +165,31 @@ ggplot(selected_info, aes(x=Perc9a)) +
         ggtitle(paste("How do Kids in Ninth Grade in", county_selected,
                       "County Score\n on the Six Tests of the Annual Fitness Test?"))
 ```
+
+
+
+* raw example using California immunization data
+
+```{r}
+
+immunization_data  <- read.csv("https://data.chhs.ca.gov/dataset/bc38e725-9180-49e7-97e5-e16cb413a40c/resource/4319a7e8-5c63-460c-b412-c7474fd7da2a/download/izkindergarten2016-17and2017-18withannotations.csv")
+
+
+selected_iz_data <- filter(immunization_data,
+                           County=="CONTRA COSTA",
+                           Public_Private=="PUBLIC",
+                           Category=="UP-TO-DATE")
+
+
+hist(selected_iz_data$Percent,breaks=50)
+plot(selected_iz_data$Enrollment,selected_iz_data$Percent)
+
+```
+
+
+
+
+
 
 
 

@@ -3,7 +3,8 @@ title: "Map Example"
 author: "Michael Samuel"
 date: "January 22, 2019"
 output:
-  html_document: default
+  html_document:
+    df_print: paged
   word_document: default
 ---
 
@@ -14,14 +15,13 @@ output:
 *  https://github.com/mcSamuelDataSci/Data_Science_Team
 
 
-<br>
 
 The library() function loads "packages" that perfrom special functions into the workspace.
 
 *  the dplyr packages is a workhorse for data manipulation
 *  the tigris package connect to the US census and reads in geographic "shape" files.  It requires a free "census key" to run
 *  tmap is the R package I use for mapping. There are many others.
-<br>
+
 
 ```{r message=FALSE}
 library(dplyr)   
@@ -62,11 +62,12 @@ map.1    <- left_join(tracts_CA, voterData, by="GEOID")
 This step makes a very simple map, with coloring based on the percent in the census tract who voted
 
 ```{r  warning=FALSE}
-tmap_mode("view")
+#tmap_mode("view")
 tm_shape(map.1) + tm_polygons(col="percent")
 ```
 
-This step filter the data to just Conta Costa County, and re-maps
+
+This step filters the data to just Conta Costa County, and re-maps
 
 ```{r warning=FALSE }
 map.2 <- filter(map.1,county_name == "Contra Costa")
