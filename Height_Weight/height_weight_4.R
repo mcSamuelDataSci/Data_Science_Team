@@ -79,6 +79,20 @@ height_weight_plot()
 
 
 
+# plot YOUR height and weight on top of this figure
+
+
+# more than one way... 
+# new
+# points
+# make it big and red...
+
+
+
+
+
+
+
 # BMI.scriptYours
 # -"clean up" this code
 # suggest better documentation?
