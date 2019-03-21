@@ -29,8 +29,7 @@ weight.sd   <-  20
 ideal.bmi <- 21.7
 ideal.bmi.sd <- 1.8
 
-
-N <- 10000
+N <- 10
 
 #-----Functions
 
