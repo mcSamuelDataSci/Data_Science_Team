@@ -1,3 +1,8 @@
+mkinsley@jsusd.org
+history psyc.
+
+
+
 # GGPLOT2
 # READING DATA
 # MARKDONW FILES
