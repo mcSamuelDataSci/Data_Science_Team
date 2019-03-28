@@ -105,7 +105,7 @@ height_weight_plot()
 
 
 
-
-
+test <- read.csv("Sample_FG_Samuals_03272019.csv")
+hist(test$HeightInches,breaks=50)
 
 
